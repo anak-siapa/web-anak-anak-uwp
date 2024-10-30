@@ -236,43 +236,43 @@
       </div>
       <div class="text-wrapper-13">FAQ</div>
       <div class="frame-3">
-        <div class="accordion">
+        <div class="accordion" data-response="YumeTales adalah website yang dibuat untuk membaca cerpen dan novel secara gratis. dikarenakan gratis jadi kami hanya menyediakan bacaan yang tidak dikomersilkan.">
           <div class="headline-button">
             <div class="apa-itu-yumetales">APA ITU YUMETALES</div>
             <div class="button-dropdown"><img class="vector" src="img/vector-1-9.svg" /></div>
           </div>
         </div>
-        <div class="accordion">
+        <div class="accordion" data-response="Jika Anda menemukan kesalahan ketik atau masalah lain dalam cerita, silakan hubungi kami melalui media sosial kami. Kami menghargai masukan Anda dan akan segera memperbaikinya.">
           <div class="headline-button">
             <p class="p">BAGAIMANA JIKA SAYA MENEMUKAN KESALAHAN DALAM CERITA?</p>
             <div class="button-dropdown"><img class="vector" src="img/vector-1-9.svg" /></div>
           </div>
         </div>
-        <div class="accordion">
+        <div class="accordion" data-response="Anda hanya perlu mengunjungi halaman utama, pilih cerpen atau novel yang ingin dibaca, dan klik pada judulnya. Cerita akan terbuka di jendela baru untuk Anda nikmati.">
           <div class="headline-button">
             <p class="p">BAGAIMANA CARA MEMBACA CERPEN DAN NOVEL DI YUMETALES?</p>
             <div class="button-dropdown"><img class="vector" src="img/vector-1-9.svg" /></div>
           </div>
         </div>
-        <div class="accordion">
+        <div class="accordion" data-response="Saat ini, kami tidak menyediakan opsi untuk mengunduh cerpen atau novel. Semua konten dapat dibaca secara online di website kami.">
           <div class="headline-button">
             <p class="apa-itu-yumetales-2">APAKAH SAYA DAPAT MENGUNDUH CERPEN ATAU NOVEL?</p>
             <div class="button-dropdown"><img class="vector" src="img/vector-1-9.svg" /></div>
           </div>
         </div>
-        <div class="accordion">
+        <div class="accordion" data-response="Tidak, Anda tidak perlu mendaftar untuk membaca cerpen atau novel di Yumetales. Semua konten dapat diakses secara gratis tanpa perlu membuat akun.">
           <div class="headline-button">
             <p class="apa-itu-yumetales-3">APAKAH SAYA PERLU MENDAFTAR UNTUK MEMBACA?</p>
             <div class="button-dropdown"><img class="vector" src="img/vector-1-9.svg" /></div>
           </div>
         </div>
-        <div class="accordion">
+        <div class="accordion" data-response="Tentu! Kami mendorong Anda untuk berbagi cerita yang Anda nikmati di media sosial. tetapi kami akan memastikan izin sang author terlebih dahulu sebelum kamu mempublikasikannya disini">
           <div class="headline-button">
             <p class="p">BISAKAH SAYA BERBAGI CERITA YANG SAYA BACA DI MEDIA SOSIAL?</p>
             <div class="button-dropdown"><img class="vector" src="img/vector-1-9.svg" /></div>
           </div>
         </div>
-        <div class="accordion">
+        <div class="accordion" data-response="Jika Anda adalah penulis dan ingin berbagi karya Anda, silakan kirimkan minat Anda melalui media sosial kami">
           <div class="headline-button">
             <p class="apa-itu-yumetales-4">
               BAGAIMANA CARA SAYA MEMBERIKAN KONTRIBUSI ATAU <br />MENGIRIMKAN KARYA SAYA?
@@ -280,7 +280,7 @@
             <div class="button-dropdown"><img class="vector" src="img/vector-1-9.svg" /></div>
           </div>
         </div>
-        <div class="accordion">
+        <div class="accordion" data-response="ig: @Yumetales_">
           <div class="headline-button">
             <p class="apa-itu-yumetales">APA AKUN MEDIA SOSIAL RESMI YUMETALES?</p>
             <div class="button-dropdown"><img class="vector" src="img/vector-1-9.svg" /></div>
@@ -291,5 +291,27 @@
       <img class="line-3" src="img/line-4.svg" />
       <img class="navy-playful-world" src="img/navy-playful-world-children-s-book-day-banner-1-1.png" />
     </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const faqItems = document.querySelectorAll('.accordion');
+        faqItems.forEach((item) => {
+          item.addEventListener('click', function () {
+            let response = this.querySelector('.response');
+            
+            // Jika elemen respons belum ada, buat elemen baru untuk menampilkan data-response
+            if (!response) {
+              response = document.createElement('div');
+              response.classList.add('response');
+              response.innerText = this.getAttribute('data-response');
+              this.appendChild(response);
+            } else {
+              // Toggle visibility dari respons
+              response.style.display = response.style.display === 'none' ? 'block' : 'none';
+            }
+          });
+        });
+      });
+    </script>
+    
   </body>
 </html>
