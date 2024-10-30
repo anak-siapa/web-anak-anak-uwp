@@ -622,3 +622,9 @@
   left: 121px;
   object-fit: cover;
 }
+
+.response {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #ffffff;
+}
