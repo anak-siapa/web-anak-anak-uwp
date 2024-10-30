@@ -1,0 +1,57 @@
+:root {
+  ---font-family: "Montserrat", Helvetica;
+  ---font-weight: 400;
+  ---font-size: 12px;
+  ---letter-spacing: 0px;
+  ---line-height: 196.18749618530273%;
+  ---font-style: normal;
+  --h-2-font-family: "Montserrat", Helvetica;
+  --h-2-font-weight: 900;
+  --h-2-font-size: 25px;
+  --h-2-letter-spacing: 0px;
+  --h-2-line-height: 196.18749618530273%;
+  --h-2-font-style: normal;
+  --single-line-body-base-font-family: "Inter", Helvetica;
+  --single-line-body-base-font-weight: 400;
+  --single-line-body-base-font-size: 16px;
+  --single-line-body-base-letter-spacing: 0px;
+  --single-line-body-base-line-height: 100%;
+  --single-line-body-base-font-style: normal;
+  --size-space-200: 8px;
+  --size-space-300: 12px;
+  --size-radius-200: 8px;
+  --color-border-brand-default: var(--color-primitives-brand-800);
+  --color-background-brand-default: var(--color-primitives-brand-800);
+  --color-text-brand-on-brand: var(--color-primitives-brand-100);
+  --color-background-brand-hover: var(--color-primitives-brand-900);
+  --color-primitives-brand-800: rgba(44, 44, 44, 1);
+  --color-primitives-brand-100: rgba(245, 245, 245, 1);
+  --color-primitives-brand-900: rgba(30, 30, 30, 1);
+  --color-primitives-brand-300: rgba(217, 217, 217, 1);
+}
+
+/*
+
+To enable a theme in your HTML, simply add one of the following data attributes to an HTML element, like so:
+
+<body data-color-mode="SDS-light">
+    <!-- the rest of your content -->
+</body>
+
+You can apply the theme on any DOM node, not just the `body`
+
+*/
+
+[data-color-mode="SDS-light"] {
+  --color-border-brand-default: var(--color-primitives-brand-800);
+  --color-background-brand-default: var(--color-primitives-brand-800);
+  --color-text-brand-on-brand: var(--color-primitives-brand-100);
+  --color-background-brand-hover: var(--color-primitives-brand-900);
+}
+
+[data-color-mode="SDS-dark"] {
+  --color-border-brand-default: var(--color-primitives-brand-100);
+  --color-background-brand-default: var(--color-primitives-brand-100);
+  --color-text-brand-on-brand: var(--color-primitives-brand-900);
+  --color-background-brand-hover: var(--color-primitives-brand-300);
+}
