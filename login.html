@@ -1,5 +1,6 @@
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
@@ -17,6 +18,9 @@
             height: 100vh;
         }
         .container {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
             background-color: #333;
             padding: 20px;
             border-radius: 8px;
@@ -103,6 +107,46 @@
         .back-link a:hover {
             text-decoration: underline;
         }
+        @media (max-width: 768px) {
+            .container {
+                width: 90%; /* Kurangi lebar container agar lebih proporsional */
+                padding: 15px; /* Kurangi padding untuk layar kecil */
+            }
+            .form-group label {
+                font-size: 0.9rem; /* Sesuaikan ukuran font */
+            }
+            .form-group input {
+                padding: 8px; /* Kurangi padding input */
+                font-size: 0.9rem; /* Sesuaikan font input */
+            }
+            .btn {
+                padding: 8px; /* Kurangi padding tombol */
+                font-size: 1rem; /* Sesuaikan ukuran font tombol */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: 100%; /* Maksimalkan lebar container */
+                padding: 10px; /* Kurangi padding lebih jauh */
+            }
+            h2 {
+                font-size: 1.5rem; /* Sesuaikan ukuran heading */
+            }
+            .form-group label {
+                font-size: 0.8rem; /* Kurangi ukuran font untuk layar kecil */
+            }
+            .form-group input {
+                font-size: 0.8rem; /* Sesuaikan ukuran font input */
+            }
+            .btn {
+                font-size: 0.9rem; /* Perkecil font tombol */
+            }
+            .login-link a, .back-link a {
+                font-size: 0.8rem; /* Perkecil font link */
+            }
+        }
+
     </style>
 </head>
 <body>
