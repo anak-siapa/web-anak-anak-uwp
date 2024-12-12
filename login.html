@@ -1,219 +1,172 @@
 <html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #2c2c2c;
-            color: #fff;
+ <head>
+  <title>
+   Wanita berwajah penyok
+  </title>
+  <link rel="website icon" type="png"
+  href="/img/Logo_YumeTales-removebg-preview.png">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            font-family: 'Roboto', sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
         }
         .container {
-            display: flex;
-            flex-direction: column;
-            align-items: stretch;
-            background-color: #333;
+            max-width: 800px;
+            margin: 0 auto;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 400px;
         }
-        .container h2 {
+        .header {
+            display: flex;
+            align-items: center;
             margin-bottom: 20px;
-            font-weight: 700;
-            text-align: center;
         }
-        .form-group {
-            margin-bottom: 15px;
+        .header i {
+            font-size: 24px;
+            margin-right: 10px;
         }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 700;
+        .header a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
         }
-        .form-group input {
+        .content {
+            background-color: #2a2a2a;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .content-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .content img {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            background-color: #444;
-            color: #fff;
+            max-width: 150px;
+            border-radius: 10px;
+            margin-right: 20px;
         }
-        .form-group input:focus {
-            border-color: #007bff;
-            outline: none;
+        .content h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
         }
-        .form-group .error {
-            color: red;
-            font-size: 0.875em;
+        .content h2 {
+            font-size: 18px;
+            color: #b3b3b3;
+            margin-bottom: 20px;
         }
-        .form-group .success {
-            color: green;
-            font-size: 0.875em;
+        .content p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-align: justify;
         }
-        .form-group .icon {
-            position: absolute;
-            right: 10px;
-            top: 35px;
-            color: #ccc;
-        }
-        .form-group .icon.valid {
-            color: green;
-        }
-        .form-group .icon.invalid {
-            color: red;
-        }
-        .btn {
-            width: 100%;
-            padding: 10px;
-            background-color: #007bff;
-            border: none;
-            border-radius: 4px;
-            color: #fff;
-            font-weight: 700;
-            cursor: pointer;
-        }
-        .btn:hover {
-            background-color: #0056b3;
-        }
-        .register-link {
-            text-align: center;
+        .footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             margin-top: 20px;
         }
-        .register-link a {
-            color: #007bff;
+        .footer-left {
+            display: flex;
+            align-items: center;
+        }
+        .footer button {
+            background-color: #333333;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .footer button:hover {
+            background-color: #444444;
+        }
+        .footer span {
+            font-size: 16px;
+        }
+        .footer-right {
+            display: flex;
+            align-items: center;
+        }
+        .footer-right a {
+            color: #ffffff;
             text-decoration: none;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
         }
-        .register-link a:hover {
-            text-decoration: underline;
+        .footer-right a i {
+            margin-left: 5px;
         }
-        .back-link {
-            text-align: center;
-            margin-top: 10px;
-        }
-        .back-link a {
-            color: #007bff;
-            text-decoration: none;
-        }
-        .back-link a:hover {
-            text-decoration: underline;
-        }
-        @media (max-width: 768px) {
-            .container {
-                width: 90%; /* Kurangi lebar container agar lebih proporsional */
-                padding: 15px; /* Kurangi padding untuk layar kecil */
-            }
-            .form-group label {
-                font-size: 0.9rem; /* Sesuaikan ukuran font */
-            }
-            .form-group input {
-                padding: 8px; /* Kurangi padding input */
-                font-size: 0.9rem; /* Sesuaikan font input */
-            }
-            .btn {
-                padding: 8px; /* Kurangi padding tombol */
-                font-size: 1rem; /* Sesuaikan ukuran font tombol */
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                width: 100%; /* Maksimalkan lebar container */
-                padding: 10px; /* Kurangi padding lebih jauh */
-            }
-            h2 {
-                font-size: 1.5rem; /* Sesuaikan ukuran heading */
-            }
-            .form-group label {
-                font-size: 0.8rem; /* Kurangi ukuran font untuk layar kecil */
-            }
-            .form-group input {
-                font-size: 0.8rem; /* Sesuaikan ukuran font input */
-            }
-            .btn {
-                font-size: 0.9rem; /* Perkecil font tombol */
-            }
-            .login-link a, .back-link a {
-                font-size: 0.8rem; /* Perkecil font link */
-            }
-        }
-
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h2>Login</h2>
-        <form id="loginForm">
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-                <i class="fas fa-check-circle icon valid" style="display: none;"></i>
-                <i class="fas fa-times-circle icon invalid" style="display: none;"></i>
-                <div class="error" id="emailError" style="display: none;">Valid email is required</div>
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
-                <i class="fas fa-check-circle icon valid" style="display: none;"></i>
-                <i class="fas fa-times-circle icon invalid" style="display: none;"></i>
-                <div class="error" id="passwordError" style="display: none;">Password is required</div>
-            </div>
-            <button type="submit" class="btn">Login</button>
-        </form>
-        <div class="register-link">
-            Don't have an account? <a href="sign up.html">Register here</a>
-        </div>
-        <div class="back-link">
-            <a href="index.html">Back to Home</a>
-        </div>
+  </style>
+ </head>
+ <body>
+  <div class="container">
+   <div class="header">
+    <i class="fas fa-arrow-left">
+    </i>
+    <a href="#">
+     Home
+    </a>
+   </div>
+   <div class="content">
+    <div class="content-header">
+     <img alt="cover wanita berwajah penyok" height="150" src="img/wanita berwajah penyok bg.webp" width="150"/>
+     <div>
+      <h1>
+       Wanita berwajah penyok
+      </h1>
+      <h2>
+       Ruth Kurnia
+      </h2>
+     </div>
     </div>
-
-    <script>
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            var isValid = true;
-    
-            var email = document.getElementById('email');
-            var password = document.getElementById('password');
-    
-            var emailError = document.getElementById('emailError');
-            var passwordError = document.getElementById('passwordError');
-    
-            if (email.value.trim() === '' || !validateEmail(email.value)) {
-                emailError.style.display = 'block';
-                isValid = false;
-            } else {
-                emailError.style.display = 'none';
-            }
-    
-            if (password.value.trim() === '') {
-                passwordError.style.display = 'block';
-                isValid = false;
-            } else {
-                passwordError.style.display = 'none';
-            }
-    
-            if (isValid) {
-                alert('Login successful!');
-                // Redirect to index.html after successful login
-                window.location.href = 'index.html';
-            }
-        });
-    
-        function validateEmail(email) {
-            var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return re.test(email);
-        }
-    </script>
-    
-</body>
-</html>
+    <p>
+     Terjepit perkara, seperti apa rasanya hidup menjadi orang yang tak diingini? Jika dia bisa berbicara, akankah dia akan menceritakan jawabnya. Koran, dia lahir tanpa diminta. Koran dapat pasar kandungan dari seorang perempuan, hasil hubungan gelap yang dibuat tanpa ada ikatan. Perempuan yang saat itu disebut "Bunga" melahirkan dia kedunia. Dia hanya menangis berdarah-kesal, meronta dan berjuang dalam hidup yang berwajah penyok yang dibuang di pinggir kampung.
+    </p>
+    <p>
+     Suatu siang yang biasa, wajah berwajah penyok keliling kampung sendirian. Anak-anak kecil yang jahil melihat, melempar, mengolok-olok, menganggap dia pengganggu dari belakang. Wanita itu menjerit sejadinya lebih keras, lalu melangkahnya ke arah anak-anak. Semua anak lari ketakutan, penyok terkapar tak bisa, menahan jiwanya terluka. Darah segar mengucur dari pelipisnya, menghilangkan pelindung menjadi sesal. Anak itu paling menyesal kepada bunga, sesalannya menekan anak lain dalam kelelahan.
+    </p>
+    <p>
+     Kadang wanita berwajah penyok akhirnya menemukan seseorang ditinggal di sebuah rumah kecil dekat tanah perkebunan. Sigit, itu sebutan tersebut tinggal di sana, tak pernah tahu bagaimana dia datang dan tumbuh. Terkadang pelukannya, seperti apa rasanya hidup dalam lumpur? Dia tak bisa berbicara, dia akan menceritakan jawabnya. Tak ada yang besar-besar tak apa yang dilakukan di sana, selalu teriakannya terpecah rasanya berteriak membentur, menahan keperihan tanah perkebunan. Orang-orang mengira itu suara kerinduan peluk perbuatan. Tak ada yang benar mendekat. Wanita berwajah penyok tak lagi bisa bicara, bahkan tanpa suara besar-besar menjerang.
+    </p>
+    <p>
+     Jadi, setiap waktu, ketika wajah penyok mendekat orang, dia lebih banyak hanya berteriak-teriak. Wajah merahnya penuh sesal jerit. Tak ada kata lebih berani buat perintah wanita berwajah penyok merasa sangat girang karena tak berarti dia berteriak ampuhnya tersangka. Tapi menahan adalah kembali menjerit, dan wanita itu terus mengeluh bukan dengan bahagia mendengarkan jerit kembali hati. Berantak menjerit.
+    </p>
+    <p>
+     Suatu malam, saat sekelu lidah menjerit sakit, mereka tak datang menjemputnya. Wanita itu merasa sangat sakit, sampai lidah sesaknya tak mau menjeritnya. Jalan itu lagi ramai dan sepi. Dia selalu berwajah penyok berjalan berkeliling menahan sesaknya. Maka dia tak menjerit, menahan lidahnya sebaliknya, dan dengan kekuatan sendiri, dia berusaha melangkah lebih jauh. Tapi jeritnya bisa, menahan terus menjerit, dan dia masih menjerit dari dia, menjerit lebih lagi.
+    </p>
+    <p>
+     Lalu, wanita itu teriak, mengeluh lagi buat apa yang tak terlewatkan. Tapi perihnya, dia teringat oleh sakit yang sangat masuk dari sakit yang menjerit akhirnya dia yang menjerang. Terkadang menjerit, dia tak lagi hanya berjalan melangkah. Satu sakit dia, berarti menahan sakit paling ke manajala wajah semakin bersedih di balik jerit dan derang. Dia menjerit kembali tak ada lebih ampuh menahan rasa itu.
+    </p>
+    <p>
+     Wanita berwajah penyok menceritakan perasaan apa adanya yang terwujud dalam dia. Dia ini, di rumah tangganya, tersesat, dan menceritakan wajah menahan dalam perintah itu. Dia terus terjerit, tak lagi terus menjerit dengan keras, karena sebaliknya tak ada lebih berani di dalamnya.
+    </p>
+   </div>
+   <div class="footer">
+    <div class="footer-left">
+     <button>
+      Back
+     </button>
+     <span>
+      cerita - end
+     </span>
+    </div>
+    <div class="footer-right">
+     <a href="#" download="cerita.pdf">
+      Unduh PDF
+      <i class="fas fa-download">
+      </i>
+     </a>
+    </div>
+   </div>
+  </div>
+ </body>
+</html> 
