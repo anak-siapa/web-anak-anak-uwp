@@ -1,242 +1,498 @@
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Account</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #2c2c2c;
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   YumeTales
+  </title>
+  <link rel="website icon" type="png"
+  href="/img/Logo_YumeTales-removebg-preview.png">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1rem;
+            background-color: #1c1c1c;
+            color: #fff;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #2c2c2c;
+        }
+        .header img {
+            height: 50px;
+        }
+        .header nav {
+            flex-grow: 1;
+            text-align: left;
+            position: relative;
+        }
+        .header nav a {
+            color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        .header .search.active {
+            display: flex;
+        }
+        .header .actions {
+            display: flex;
+            align-items: center;
+        }
+        .header .search {
+            position: relative;
+            min-width: 250px;
+            display: flex;
+            align-items: center;
+            margin-right: 15px;
+            color: #fff;
+            position: relative;
+        }
+        .header .search input {
+            display: none;
+            top: 20px;
+            left: 0;
+            width: 200px;
+            padding: 5px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background-color: #2c2c2c;
+            color: #fff;
+            outline: none;
+        }
+        .header .search.active input {
+            display: block;
+        }
+        .search-results {
+            position: absolute;
+            top: 40px;
+            left: 0;
+            background-color: #333;
+            color: #fff;
+            width: 250px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            display: none;
+            flex-direction: column;
+            z-index: 1000;
+        }
+        .search-results.active {
+            display: flex;
+        }
+        .search-results .result-item {
+            padding: 10px;
+            border-bottom: 1px solid #444;
+            cursor: pointer;
+        }
+        .search-results .result-item:last-child {
+            border-bottom: none;
+        }
+        .search-results .result-item:hover {
+            background-color: #444;
+        }
+        .search-results .close {
+            padding: 10px;
+            text-align: left;
+            cursor: pointer;
+            color: #aaa;
+        }
+        .search-results .close:hover {
+            color: #fff;
+        }
+        
+        .banner {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            color: #fff;
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: stretch;
-            background-color: #333;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 400px;
+            background-color: #1c1c1c;
         }
-        .container h2 {
-            margin-bottom: 20px;
-            font-weight: 700;
+        .banner img {
+            width: 100%;
+            max-width: 1000px;
+            max-height: 500px;
+            height: auto;
+            object-fit: cover;
+            border-radius: 35px;
+        }
+        .section-title {
+            margin: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .cards {
+            margin-left: 20px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            padding: 10px;
+        }
+        .card {
+            position: relative;
+            width: 276px;
+            height: 164px;
+            background-color: #333;
+            border-radius: 15px;
+            overflow: hidden;
             text-align: center;
         }
-        .form-group {
-            margin-bottom: 15px;
+        .card img {
+            position:absolute;
+            right: 0px;
+            width: 164px;
+            height: 164px;
+            object-fit: cover;
         }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 700;
-        }
-        .form-group input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #555;
-            border-radius: 4px;
-            background-color: #444;
-            color: #fff;
-        }
-        .form-group input:focus {
-            border-color: #007bff;
-            outline: none;
-        }
-        .form-group .error {
-            color: red;
-            font-size: 0.875em;
-        }
-        .form-group .success {
-            color: green;
-            font-size: 0.875em;
-        }
-        .form-group .icon {
+        .card .info {
             position: absolute;
-            right: 10px;
-            top: 35px;
-            color: #ccc;
-        }
-        .form-group .icon.valid {
-            color: green;
-        }
-        .form-group .icon.invalid {
-            color: red;
-        }
-        .btn {
-            width: 100%;
+            bottom: 15px;
+            left: 5px;
             padding: 10px;
-            background-color: #007bff;
-            border: none;
-            border-radius: 4px;
+        }
+        .card .info h3 {
+            margin: 10px 0;
+            font-size: 14px;
+        }
+        .card .info p {
+            font-size: 12px;
+            margin: 3px 0;
+            color: #aaa;
+        }
+        .card .price-tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #6a0dad;
             color: #fff;
-            font-weight: 700;
+            font-size: 14px;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        .old-price {
+            text-decoration: line-through;
+            color: red;
+            margin-right: 5px;
+        }
+        .faq {
+            padding: 20px;
+        }
+        .faq h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .faq-item {
+            background-color: #333;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+        .faq-item button {
+            width: 100%;
+            padding: 15px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            text-align: left;
+            font-size: 16px;
             cursor: pointer;
         }
-        .btn:hover {
-            background-color: #0056b3;
-        }
-        .login-link {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .login-link a {
-            color: #007bff;
-            text-decoration: none;
-        }
-        .login-link a:hover {
-            text-decoration: underline;
-        }
-        .back-link {
-            text-align: center;
-            margin-top: 10px;
-        }
-        .back-link a {
-            color: #007bff;
-            text-decoration: none;
-        }
-        .back-link a:hover {
-            text-decoration: underline;
+        .faq-item .content {
+            display: none;
+            padding: 15px;
+            background-color: #444;
         }
         @media (max-width: 768px) {
-            .container {
-                width: 90%;
-                padding: 15px;
-            }
-            .form-group label {
+            body {
                 font-size: 0.9rem;
             }
-            .btn {
-                padding: 8px;
-                font-size: 1rem;
+            .banner img {
+                max-height: 300px;
+            }
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .card {
+                width: 100%;
+                max-width: 100%;
+            }
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 10px;
+            }
+            .header nav {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            .header .actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .header .login a {
+                margin-bottom: 5px;
+            }
+            .faq {
+                padding: 10px;
+            }
+            .faq-item button {
+                font-size: 14px;
+                padding: 10px;
+            }
+            .faq-item .content {
+                padding: 10px;
             }
         }
         @media (max-width: 480px) {
-            .container {
-                width: 100%;
-                padding: 10px;
-            }
-            h2 {
-                font-size: 1.5rem;
-            }
-            .form-group label{
+            body {
                 font-size: 0.8rem;
-            
             }
-            .btn {
-                font-size: 0.9rem;
+            .banner img {
+                max-height: 200px;
             }
-            .login-link a, .back-link a {
-                font-size: 0.8rem;
+            .dropdown {
+                position: static;
+                display: block;
+            }
+            .cards {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                grid-template-columns: 1fr;
+                align-items: center;
             }
         }
-    </style>
-
-</head>
-<body>
-    <div class="container">
-        <h2>Create Account</h2>
-        <form id="createAccountForm">
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" required>
-                <i class="fas fa-check-circle icon valid" style="display: none;"></i>
-                <i class="fas fa-times-circle icon invalid" style="display: none;"></i>
-                <div class="error" id="usernameError" style="display: none;">Username is required</div>
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-                <i class="fas fa-check-circle icon valid" style="display: none;"></i>
-                <i class="fas fa-times-circle icon invalid" style="display: none;"></i>
-                <div class="error" id="emailError" style="display: none;">Valid email is required</div>
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
-                <i class="fas fa-check-circle icon valid" style="display: none;"></i>
-                <i class="fas fa-times-circle icon invalid" style="display: none;"></i>
-                <div class="error" id="passwordError" style="display: none;">Password is required</div>
-            </div>
-            <div class="form-group">
-                <label for="confirmPassword">Confirm Password</label>
-                <input type="password" id="confirmPassword" name="confirmPassword" required>
-                <i class="fas fa-check-circle icon valid" style="display: none;"></i>
-                <i class="fas fa-times-circle icon invalid" style="display: none;"></i>
-                <div class="error" id="confirmPasswordError" style="display: none;">Passwords must match</div>
-            </div>
-            <button type="submit" class="btn">Create Account</button>
-        </form>
-        <div class="login-link">
-            Already have an account? <a href="login.html">Login here</a>
-        </div>
-        <div class="back-link">
-            <a href="index.html">Back to Home</a>
-        </div>
+  </style>
+ </head>
+ <body>
+  <header class="header">
+   <img alt="Logo" height="50" src="img/Logo_YumeTales-removebg-preview.png" width="85"/>
+   <nav>
+   </nav>
+   <div class="actions">
+    <div class="search">
+     <i class="fas fa-search"></i>
+     <input type="text" id="searchInput" placeholder="Cari judul...">
+     <div class="search-results" id="searchResults">
+      <div class="close">Tutup</div>
+     </div>
     </div>
-
-    <script>
-        document.getElementById('createAccountForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            var isValid = true;
-
-            var username = document.getElementById('username');
-            var email = document.getElementById('email');
-            var password = document.getElementById('password');
-            var confirmPassword = document.getElementById('confirmPassword');
-
-            var usernameError = document.getElementById('usernameError');
-            var emailError = document.getElementById('emailError');
-            var passwordError = document.getElementById('passwordError');
-            var confirmPasswordError = document.getElementById('confirmPasswordError');
-
-            if (username.value.trim() === '') {
-                usernameError.style.display = 'block';
-                isValid = false;
-            } else {
-                usernameError.style.display = 'none';
-            }
-
-            if (email.value.trim() === '' || !validateEmail(email.value)) {
-                emailError.style.display = 'block';
-                isValid = false;
-            } else {
-                emailError.style.display = 'none';
-            }
-
-            if (password.value.trim() === '') {
-                passwordError.style.display = 'block';
-                isValid = false;
-            } else {
-                passwordError.style.display = 'none';
-            }
-
-            if (confirmPassword.value.trim() === '' || confirmPassword.value !== password.value) {
-                confirmPasswordError.style.display = 'block';
-                isValid = false;
-            } else {
-                confirmPasswordError.style.display = 'none';
-            }
-
-            if (isValid) {
-                alert('Account created successfully!');
-                window.location.href = 'index.html';
-            }
+   </div>
+  </header>
+  <section class="banner">
+    <img src="img/Navy Playful World Children's Book Day Banner (4).png" alt="Banner Image">
+  </section>
+  <section>
+   <h2 class="section-title">
+    Terpopuler
+   </h2>
+   <div class="cards">
+    <div class="card">
+     <div class="price-tag">Rp 5.000</div>
+     <img alt="Character Image" src="img/Wanita Berwajah Penyok.png"/>
+     <div class="info">
+      <h3>
+       Wanita<br> Berwajah Penyok
+      </h3>
+      <p>
+       Drama | <span style="color: #007fff;">Cerpen</span>
+      </p>
+     </div>
+    </div>
+    <div class="card">
+     <div class="price-tag">Rp 3.500</div>
+     <img alt="Character Image" src="img/Melodi dari Alam Fantasi.png"/>
+     <div class="info">
+      <h3>
+       Melodi dari<br>Alam Fantasi
+      </h3>
+      <p>
+       Fantasy | <span style="color: #007fff;">Cerpen</span>
+      </p>
+     </div>
+    </div>
+    <div class="card">
+     <div class="price-tag">Rp 4.000</div>
+     <img alt="Character Image" src="img/Kelas Zombie.png"/>
+     <div class="info">
+      <h3>
+       Kelas Zombie
+      </h3>
+      <p>
+       Horror | <span style="color: #007fff;">Cerpen</span>
+      </p>
+     </div>
+    </div>
+    <div class="card">
+     <div class="price-tag">Rp 2.500</div>
+     <img alt="Character Image" src="img/Abang Jahanam vs Adik Biadab.png"/>
+     <div class="info">
+      <h3>
+       Abang Jahat<br> vs <Br>Adik Biadab
+      </h3>
+      <p>
+       Comedy | <span style="color: #007fff;">Cerpen</span>
+      </p>
+     </div>
+    </div>
+    <div class="card">
+     <div class="price-tag"><span class="old-price">Rp 7.000<Br></span>Rp 0</div>
+     <img alt="Character Image" src="img/Persahabatan.png"/>
+     <div class="info">
+      <h3>
+       Persahabatan
+      </h3>
+      <p>
+       Slice of Life | <span style="color: #007fff;">Cerpen</span>
+      </p>
+     </div>
+    </div>
+    <div class="card">
+     <div class="price-tag">Rp 14.000</div>
+     <img alt="Character Image" src="img/Ignoramus.png"/>
+     <div class="info">
+      <h3>
+       Ignoramus
+      </h3>
+      <p>
+       Sci-Fi | <span style="color: #007fff;">Cerpen</span>
+      </p>
+     </div>
+    </div>
+    <div class="card">
+     <div class="price-tag">Rp 5.500</div>
+     <img alt="Character Image" src="img/Kurir.png"/>
+     <div class="info">
+      <h3>
+       Kurir
+      </h3>
+      <p>
+       Thriller | <span style="color: #007fff;">Cerpen</span>
+      </p>
+     </div>
+    </div>
+    <div class="card">
+     <div class="price-tag">Rp 2.500</div>
+     <img alt="Character Image" src="img/wounded love.png"/>
+     <div class="info">
+      <h3>
+       Wounded<br> Love
+      </h3>
+      <p>
+       Romance | <span style="color: #007fff;">Novel</span>
+      </p>
+     </div>
+    </div>
+   </div>
+  </section>
+  <section class="faq">
+   <h2>
+    FAQ
+   </h2>
+   <div class="faq-item">
+    <button>
+     Apa itu YumeTales
+    </button>
+    <div class="content">
+     <p>
+        YumeTales adalah website yang dibuat untuk membaca cerpen dan novel secara mudah dan menyediakan beberapa bacaan gratis.
+     </p>
+    </div>
+   </div>
+   <div class="faq-item">
+    <button>
+     Bagaimana jika saya menemukan kesalahan?
+    </button>
+    <div class="content">
+     <p>
+      Jika anda menemukan kesalahan, Silahkan hubungi kami melalui media sosial kami. Kami sangat menghargai masukan anda dan akan segera memperbaikinya
+     </p>
+    </div>
+   </div>
+   <div class="faq-item">
+    <button>
+     Bagaimana jika saya ingin memberikan karya saya?
+    </button>
+    <div class="content">
+     <p>
+      Jika anda adalah penulis dan ingin berbagi karya anda, silahkan kirimkan minat anda melalui media sosial kami
+     </p>
+    </div>
+   </div>
+   <div class="faq-item">
+    <button>
+     Apa akun media sosial resmi YumeTales?
+    </button>
+    <div class="content">
+     <p>
+      Ig @yumetales_
+     </p>
+    </div>
+   </div>
+  </section>
+  <script>
+   document.querySelectorAll('.faq-item button').forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                button.classList.toggle('active');
+                if (button.classList.contains('active')) {
+                    content.style.display = 'block';
+                } else {
+                    content.style.display = 'none';
+                }
+            });
         });
 
-        function validateEmail(email) {
-            var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return re.test(email);
-        }
-    </script>
-</body>
+   // Search functionality
+   const searchIcon = document.querySelector('.search i');
+   const searchInput = document.getElementById('searchInput');
+   const searchResults = document.getElementById('searchResults');
+
+   searchIcon.addEventListener('click', () => {
+      document.querySelector('.search').classList.toggle('active');
+      searchInput.focus(); // Focus on input when search is active
+   });
+
+   searchInput.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase();
+      const cards = document.querySelectorAll('.card');
+      searchResults.innerHTML = '<div class="close">Tutup</div>'; // Reset results
+      let hasResults = false;
+
+      cards.forEach(card => {
+         const title = card.querySelector('h3').textContent.toLowerCase();
+         if (title.includes(query) && query !== '') {
+            const resultItem = document.createElement('div');
+            resultItem.className = 'result-item';
+            resultItem.textContent = title;
+            searchResults.appendChild(resultItem);
+            hasResults = true;
+         }
+      });
+
+      if (hasResults) {
+         searchResults.classList.add('active');
+      } else {
+         searchResults.classList.remove('active');
+      }
+   });
+
+   searchResults.addEventListener('click', (e) => {
+      if (e.target.classList.contains('close')) {
+         searchResults.classList.remove('active');
+         searchInput.value = '';
+         document.querySelector('.search').classList.remove('active');
+      }
+   });
+  </script>
+ </body>
 </html>
