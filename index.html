@@ -6,6 +6,8 @@
   <title>
    YumeTales
   </title>
+  <link rel="website icon" type="png"
+  href="/img/Logo_YumeTales-removebg-preview.png">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
   <style>
@@ -29,6 +31,8 @@
             height: 50px;
         }
         .header nav {
+            flex-grow: 1;
+            text-align: left;
             position: relative;
         }
         .header nav a {
@@ -36,31 +40,7 @@
             margin: 0 15px;
             text-decoration: none;
         }
-        .dropdown {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: #333;
-            color: #fff;
-            display: none;
-            flex-direction: column;
-            min-width: 150px;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-        .dropdown a {
-            padding: 10px;
-            text-decoration: none;
-            color: #fff;
-        }
-        .dropdown a:hover {
-            background-color: #444;
-        }
-        .header nav a.genre {
-            cursor: pointer;
-        }
-        .header nav a.genre:hover + .dropdown,
-        .dropdown:hover {
+        .header .search.active {
             display: flex;
         }
         .header .actions {
@@ -68,14 +48,17 @@
             align-items: center;
         }
         .header .search {
+            position: relative;
+            min-width: 250px;
+            display: flex;
+            align-items: center;
             margin-right: 15px;
             color: #fff;
             position: relative;
         }
         .header .search input {
             display: none;
-            position: absolute;
-            top: 0;
+            top: 20px;
             left: 0;
             width: 200px;
             padding: 5px;
@@ -124,23 +107,13 @@
         .search-results .close:hover {
             color: #fff;
         }
-        .header .login {
-            display: flex;
-            gap: 10px;
-        }
-        .header .login a {
-            color: #fff;
-            text-decoration: none;
-            padding: 5px 10px;
-            border: 1px solid #fff;
-            border-radius: 5px;
-        }
+        
         .banner {
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
-            background-color: #2c2c2c;
+            background-color: #1c1c1c;
         }
         .banner img {
             width: 100%;
@@ -149,6 +122,7 @@
             height: auto;
             object-fit: cover;
             border-radius: 35px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
         }
         .section-title {
             margin: 20px;
@@ -156,6 +130,7 @@
             font-weight: bold;
         }
         .cards {
+            margin-left: 20px;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 10px;
@@ -163,27 +138,34 @@
         }
         .card {
             position: relative;
-            width: 300px;
-            height: auto;
+            width: 276px;
+            height: 164px;
             background-color: #333;
             border-radius: 15px;
             overflow: hidden;
             text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
         }
         .card img {
-            width: 200px;
-            height: 200px;
+            position:absolute;
+            right: 0px;
+            width: 164px;
+            height: 164px;
             object-fit: cover;
         }
         .card .info {
+            position: absolute;
+            bottom: 15px;
+            left: 5px;
             padding: 10px;
         }
         .card .info h3 {
             margin: 10px 0;
-            font-size: 18px;
+            font-size: 14px;
         }
         .card .info p {
-            margin: 5px 0;
+            font-size: 12px;
+            margin: 3px 0;
             color: #aaa;
         }
         .card .price-tag {
@@ -286,6 +268,7 @@
             .cards {
                 display: flex;
                 flex-direction: column;
+                margin-left: auto;
                 gap: 15px;
                 grid-template-columns: 1fr;
                 align-items: center;
@@ -297,15 +280,6 @@
   <header class="header">
    <img alt="Logo" height="50" src="img/Logo_YumeTales-removebg-preview.png" width="85"/>
    <nav>
-    <a href="#" class="genre">Genre</a>
-    <div class="dropdown">
-      <a href="#">Drama</a>
-      <a href="#">Fantasy</a>
-      <a href="#">Horror</a>
-      <a href="#">Comedy</a>
-      <a href="#">Sci-Fi</a>
-      <a href="#">Romance</a>
-    </div>
    </nav>
    <div class="actions">
     <div class="search">
@@ -314,10 +288,6 @@
      <div class="search-results" id="searchResults">
       <div class="close">Tutup</div>
      </div>
-    </div>
-    <div class="login">
-     <a href="login.html">Login</a>
-     <a href="sign up.html">Sign Up</a>
     </div>
    </div>
   </header>
@@ -330,11 +300,11 @@
    </h2>
    <div class="cards">
     <div class="card">
-     <div class="price-tag">Rp 50.000</div>
+     <div class="price-tag">Rp 5.000</div>
      <img alt="Character Image" src="img/Wanita Berwajah Penyok.png"/>
      <div class="info">
       <h3>
-       Wanita Berwajah Penyok
+       Wanita<br> Berwajah Penyok
       </h3>
       <p>
        Drama | <span style="color: #007fff;">Cerpen</span>
@@ -342,11 +312,11 @@
      </div>
     </div>
     <div class="card">
-     <div class="price-tag">Rp 30.500</div>
+     <div class="price-tag">Rp 3.500</div>
      <img alt="Character Image" src="img/Melodi dari Alam Fantasi.png"/>
      <div class="info">
       <h3>
-       Melodi dari Alam Fantasi
+       Melodi dari<br>Alam Fantasi
       </h3>
       <p>
        Fantasy | <span style="color: #007fff;">Cerpen</span>
@@ -354,11 +324,11 @@
      </div>
     </div>
     <div class="card">
-     <div class="price-tag">Rp 40.000</div>
-     <img alt="Character Image" src="img/Kelas Zombie.png"/>
+     <div class="price-tag">Rp 4.000</div>
+     <img alt="Character Image" src="img/karantina terakhir.png"/>
      <div class="info">
       <h3>
-       Kelas Zombie
+       Karantina Terakhir
       </h3>
       <p>
        Horror | <span style="color: #007fff;">Cerpen</span>
@@ -366,11 +336,11 @@
      </div>
     </div>
     <div class="card">
-     <div class="price-tag">Rp 20.500</div>
-     <img alt="Character Image" src="img/Abang Jahanam vs Adik Biadab.png"/>
+     <div class="price-tag">Rp 2.500</div>
+     <img alt="Character Image" src="img/pencarian jodoh yang gagal.png"/>
      <div class="info">
       <h3>
-       Abang Jahat vs Adik Biadab
+       Pencarian Jodoh<br>yang Gagal
       </h3>
       <p>
        Comedy | <span style="color: #007fff;">Cerpen</span>
@@ -378,7 +348,7 @@
      </div>
     </div>
     <div class="card">
-     <div class="price-tag"><span class="old-price">Rp 70.000</span> Rp 0</div>
+     <div class="price-tag"><span class="old-price">Rp 7.000<Br></span>Rp 0</div>
      <img alt="Character Image" src="img/Persahabatan.png"/>
      <div class="info">
       <h3>
@@ -390,11 +360,11 @@
      </div>
     </div>
     <div class="card">
-     <div class="price-tag">Rp 600.000</div>
-     <img alt="Character Image" src="img/Ignoramus.png"/>
+     <div class="price-tag">Rp 14.000</div>
+     <img alt="Character Image" src="img/waktu tertunda.png"/>
      <div class="info">
       <h3>
-       Ignoramus
+       Waktu yang Tertunda
       </h3>
       <p>
        Sci-Fi | <span style="color: #007fff;">Cerpen</span>
@@ -402,7 +372,7 @@
      </div>
     </div>
     <div class="card">
-     <div class="price-tag">Rp 50.500</div>
+     <div class="price-tag">Rp 5.500</div>
      <img alt="Character Image" src="img/Kurir.png"/>
      <div class="info">
       <h3>
@@ -414,11 +384,11 @@
      </div>
     </div>
     <div class="card">
-     <div class="price-tag">Rp 250.000</div>
+     <div class="price-tag">Rp 2.500</div>
      <img alt="Character Image" src="img/wounded love.png"/>
      <div class="info">
       <h3>
-       Wounded Love
+       Wounded<br> Love
       </h3>
       <p>
        Romance | <span style="color: #007fff;">Novel</span>
